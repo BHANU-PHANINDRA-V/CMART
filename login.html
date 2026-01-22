@@ -5,37 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        form{
-
-            height: 50vh;
-            width: 30vw;
-            background-color: lightblue;
-            left: 30vw;
-            position: relative;
-            top:20vh;
-            padding: 20px;
-        }
         body{
-            background-color: rgb(1, 1, 1);
+            height: 80vh;
+            width: 60vw;
+            background-color: rgb(189, 179, 236);
         }
-        
-    </style>
+        form{
+            background-color: rgb(21, 228, 114);
+            top:20vh;
+            position: relative;
+            height: 50vh;
+            left:30vw;
+            padding-left: 30px;
+            padding-top: 30px;
+            justify-content: space-evenly;
+            gap:20px;
+            border-radius:0px 40px 0px 40px;
+        }
+        #signbt,#logbt{
+            background-color: aqua;
+            color: rgb(241, 17, 196);
+            border: 5px solid black;
+            border-radius: 10px 0px 10px 0px;
+            left: 20vw;
+            position: absolute;
+            
+        }
+        h3{
+            background-color: rgb(198, 198, 204);
+            font-style:italic;
+            color: blueviolet;
+        }
+        button:hover{
+             padding-left: 50px;
+             color:blue;
+             transition: all 0.5s ease-in-out;
+        }
+        </style>
 </head>
 <body>
     <form >
-    <label for="">name</label>
+    <label for="">USERNAME</label>
     <br>
-    <input id="usr_name" type="text" placeholder="usr_name,number,mail"><br>
+    <input id="usr_name" type="text" placeholder="usr_name,number,mail" required><br>
     <span id="msg1" style="background-color: red;"></span>
     <br>
-    <label for="">pswd</label>
+    <label for="">PASSWORD</label>
     <br>
-    <input id="number" type="password" placeholder="for now number is pswd"><br>
+    <input id="number" type="password" placeholder="for now number is pswd" required><br>
     <span id="msg2" style="background-color: red;"></span>
     <br>
-    <input type="submit" value="login">
+    <input  id="logbt" type="submit" value="login" required><br>
     <h3>if you are a new user create an account</h3>
-    <button ><a href="signup.html">signup</a></button>
+    <button id="signbt"><a href="signup.html">SIGNIN</a></button>
    </form>
 </body>
 </html>
