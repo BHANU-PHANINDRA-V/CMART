@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Resolve - Staff Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "primary": "#ec3413",
+                "background-light": "#f8f6f6",
+                "background-dark": "#221310",
+                "navy": "#1e293b",
+                "navy-light": "#334155",
+                },
+                fontFamily: {
+                "display": ["Inter", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-72 bg-white dark:bg-[#2a1a17] border-r border-slate-200 dark:border-[#3e2c29] flex flex-col flex-shrink-0 z-20">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">school</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-none tracking-tight">Campus Resolve</h1>
+<p class="text-slate-500 dark:text-[#a08c89] text-xs font-medium mt-1">NIT Andhra Pradesh</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-4 py-2 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-[#d3c6c4] hover:bg-slate-50 dark:hover:bg-[#3e2c29] transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-[#d3c6c4] hover:bg-slate-50 dark:hover:bg-[#3e2c29] transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">assignment_late</span>
+<span class="text-sm font-medium">Complaints</span>
+<span class="ml-auto bg-primary/10 text-primary text-xs font-bold px-2 py-0.5 rounded-full">12</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/5 text-primary dark:bg-primary/20 dark:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl fill-current">engineering</span>
+<span class="text-sm font-bold">Staff Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-[#d3c6c4] hover:bg-slate-50 dark:hover:bg-[#3e2c29] transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">bar_chart</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-[#d3c6c4] hover:bg-slate-50 dark:hover:bg-[#3e2c29] transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-[#3e2c29]">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-[#3e2c29]">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Admin user profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUuqWYs2_jm8V8iOd_9bwxcAyTVH2fSDlrnPBylLaNtoYWEqtoPUIGIoEf3akfB708tYM48wQEdjMd5nTmfmUGJm9iU4XhLCLwRaEtmcoJt2AKb8yxwxudisBVv18MDF9aiFO2Z9_yoO0pro5QQOcvAp4YEkfkUbJVHHvDzrB2m3i1c-acIr7gnOXhZ6N_oj6xWhdIjoAijy_7jspmCnpHUfwNDPKan4lExvyG2nhAPwtBzlHf8HoH_--IEsbEd1GyAwE9Yr_8JCU');"></div>
+<div class="flex flex-col min-w-0">
+<p class="text-sm font-bold text-slate-900 dark:text-white truncate">Admin User</p>
+<p class="text-xs text-slate-500 dark:text-[#a08c89] truncate">admin@nitandhra.ac.in</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Header Section -->
+<header class="flex-shrink-0 px-8 py-6 bg-white dark:bg-[#2a1a17] border-b border-slate-200 dark:border-[#3e2c29]">
+<div class="max-w-6xl mx-auto w-full">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-[#a08c89] mb-3">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-base">chevron_right</span>
+<span class="font-medium text-slate-800 dark:text-white">Staff Management</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-navy dark:text-white">Staff Management</h2>
+<p class="text-slate-500 dark:text-[#a08c89] mt-1">Manage maintenance personnel, track status, and assign tasks.</p>
+</div>
+<button class="bg-primary hover:bg-red-700 text-white px-5 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">add</span>
+                            Add New Staff
+                        </button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+<div class="max-w-6xl mx-auto w-full flex flex-col gap-6">
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-[#2a1a17] p-5 rounded-xl border border-slate-100 dark:border-[#3e2c29] shadow-sm flex flex-col gap-1 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-navy dark:text-white">group</span>
+</div>
+<p class="text-slate-500 dark:text-[#a08c89] text-sm font-medium">Total Staff</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-navy dark:text-white">42</span>
+<span class="text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/30 dark:text-green-400 px-1.5 py-0.5 rounded">+2 new</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#2a1a17] p-5 rounded-xl border border-slate-100 dark:border-[#3e2c29] shadow-sm flex flex-col gap-1 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">engineering</span>
+</div>
+<p class="text-slate-500 dark:text-[#a08c89] text-sm font-medium">Currently On Task</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-primary">15</span>
+<span class="text-xs font-medium text-slate-400">busy now</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#2a1a17] p-5 rounded-xl border border-slate-100 dark:border-[#3e2c29] shadow-sm flex flex-col gap-1 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-navy dark:text-white">check_circle</span>
+</div>
+<p class="text-slate-500 dark:text-[#a08c89] text-sm font-medium">Available Staff</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-navy dark:text-white">24</span>
+<span class="text-xs font-medium text-slate-400">ready to assign</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#2a1a17] p-5 rounded-xl border border-slate-100 dark:border-[#3e2c29] shadow-sm flex flex-col gap-1 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-navy dark:text-white">timer</span>
+</div>
+<p class="text-slate-500 dark:text-[#a08c89] text-sm font-medium">Avg Resolution</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-navy dark:text-white">1h 45m</span>
+<span class="text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/30 dark:text-green-400 px-1.5 py-0.5 rounded">-12%</span>
+</div>
+</div>
+</div>
+<!-- Filters & Toolbar -->
+<div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-white dark:bg-[#2a1a17] p-4 rounded-xl border border-slate-200 dark:border-[#3e2c29] shadow-sm">
+<div class="flex w-full md:w-auto gap-3 flex-1">
+<div class="relative flex-1 md:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-[#3e2c29] border border-slate-200 dark:border-[#523a36] rounded-lg text-sm text-slate-700 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="Search by name, ID or role..." type="text"/>
+</div>
+<div class="relative hidden sm:block">
+<select class="appearance-none pl-4 pr-10 py-2.5 bg-slate-50 dark:bg-[#3e2c29] border border-slate-200 dark:border-[#523a36] rounded-lg text-sm text-slate-700 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none cursor-pointer">
+<option>All Roles</option>
+<option>Electrician</option>
+<option>Plumber</option>
+<option>Carpenter</option>
+<option>Cleaning</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-lg">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2.5 text-slate-500 hover:text-primary hover:bg-slate-50 dark:hover:bg-[#3e2c29] rounded-lg transition-colors border border-transparent hover:border-slate-200 dark:hover:border-[#523a36]">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2.5 text-slate-500 hover:text-primary hover:bg-slate-50 dark:hover:bg-[#3e2c29] rounded-lg transition-colors border border-transparent hover:border-slate-200 dark:hover:border-[#523a36]">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Main Data Table -->
+<div class="bg-white dark:bg-[#2a1a17] rounded-xl border border-slate-200 dark:border-[#3e2c29] shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-100 dark:border-[#3e2c29] bg-slate-50/50 dark:bg-[#32221f]">
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#a08c89]">Staff Member</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#a08c89]">Role</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#a08c89]">Status</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#a08c89]">Current Assignment</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#a08c89] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-[#3e2c29]">
+<!-- Row 1 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-[#3e2c29]/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-slate-100 dark:border-[#523a36]" data-alt="Portrait of Ramesh Kumar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl4zl6jKPBDiz1liy9v5AAwoWt-GAwIz2S8JDVbB4rAfLC3UC_WxE0HecrS9ECn1RSK9Hq6viOigF_HrQF0KaTR2-k6osWRD6BcUe_H3dmCmxClynWihY_OyW1kJWsFVvj5Egt4g6j95orHp4VSNV9hwizNjyPT8vazF_rjzMcib5TkAj8cBH1rdsY1J425GKDTiS_O3WS70gFZDZtDZlhIGJxu2ddlkaSVfQOdLRMQj_kP_y1irkZxxpWOnQfLhQBNNiK0-J7ai0');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-sm text-slate-900 dark:text-white">Ramesh Kumar</span>
+<span class="text-xs text-slate-500">ID: #STF-001</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">bolt</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Electrician</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+<span class="size-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                                On Task
+                                            </span>
+</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white font-medium">Fan Repair - Room 302</span>
+<span class="text-xs text-slate-500">Started 45 mins ago</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-navy dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#523a36] rounded-lg transition-colors" title="View Details">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-[#3e2c29]/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-slate-100 dark:border-[#523a36]" data-alt="Portrait of Suresh Reddy" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPrvfeKd2-6HMOysYFjbWZH2VnlOfW-hOQ2uKipOFRP9h1gkS_SNIAFYRl-gT6_JvAATtaOCpPqpzN-9ZrSLCrc6GAAjflhKWj9z8yTApKsPOMaaxCMDwk0yzGJ-cXaHt2R6hpDaEyHaSwmWUM7XoSbo37ABlKvAPTRNtofiwaR_YRwrOQqHatwQI3Gn7PIxBoCO6Qr_T53q0FKivnaEqmcd76MrvFr2qZN1Ut2osi_5NJ8lOuHRopMvHfYOvoOpkS_jBsfKPMDeQ');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-sm text-slate-900 dark:text-white">Suresh Reddy</span>
+<span class="text-xs text-slate-500">ID: #STF-004</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">water_drop</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Plumber</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 border border-green-200 dark:border-green-800">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+                                                Active
+                                            </span>
+</td>
+<td class="p-4">
+<span class="text-sm text-slate-400 italic">-- No current task --</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-navy dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#523a36] rounded-lg transition-colors" title="View Details">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-[#3e2c29]/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-slate-100 dark:border-[#523a36]" data-alt="Portrait of Anil Singh" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVAs92u0amw98GWxykLcNEf3Jge99fELhwWj9MtPkKqVTYrtX8Q4Ge6BjD8Xg9dQKnzekSqEm30i3IqY-tUjKG643XQ25UMjjCRYrWcV1os62rrhHChliW_fuNnPv5rhcDC20PDW_Po2vESUpFiEyGTmZLeNmCV27lArh0RfDSBWHlCiLmWteati4Ky5bJoyX03woB6JJe4Ov7JRZ2CfmP7x93JyLENVhNeu9JXEgiawqwtWYoj4vxM8NVrJQDmAr4OuupqlA6UYc');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-sm text-slate-900 dark:text-white">Anil Singh</span>
+<span class="text-xs text-slate-500">ID: #STF-009</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">handyman</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Carpenter</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+                                                Offline
+                                            </span>
+</td>
+<td class="p-4">
+<span class="text-sm text-slate-400 italic">--</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-navy dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#523a36] rounded-lg transition-colors" title="View Details">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-[#3e2c29]/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-slate-100 dark:border-[#523a36]" data-alt="Portrait of Priya Sharma" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCfyHWYiwpq7svKQRCshoSl4r7RS-JrHg_l5ePjwsrAYaZnGc4D5GDrAaai11QKz5HhwVODnI0ehR9uCMZxUFEmjzV3E7ts6R_fDG7_IP00gWqohP0NHRlBjpd7Vc1v4s0YcZrCRSkRAslVSLQTP_Ns0x3khqzTaR0khw-5MhQByf_O3XRtrwXGzaKN68NJ2nCruk--MXQ9rcZb-eYj8Wy2_HMm0kVIgNy3lQYFIKY684jVmeOztJkicCjpDs-Y7-mbc0SQPLc3I-w');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-sm text-slate-900 dark:text-white">Priya Sharma</span>
+<span class="text-xs text-slate-500">ID: #STF-012</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">cleaning_services</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Housekeeping</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 border border-green-200 dark:border-green-800">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+                                                Active
+                                            </span>
+</td>
+<td class="p-4">
+<span class="text-sm text-slate-400 italic">-- No current task --</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-navy dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#523a36] rounded-lg transition-colors" title="View Details">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-[#3e2c29]/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-slate-100 dark:border-[#523a36]" data-alt="Portrait of Venkat Rao" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDunqxD9ZDRSWwNYTCCKymmbkGeu-VGh5FmnvtSVXVgyTFHrb6b0SfDHy3GdusnlJjbpOqGbpfCnZaWY6oIZmNTSNnD9pg0EXd1sxc4hIXEmG-WyAs4-DsAU4ZFi3IrH7xO1UIlki_VXPg1n0Pr0ghFgl92BkUXOnKP42v8nSJffLi1cjznZx8p0aN8-kkU37BgzohTPcAGtYfES_JuWpm-z9am5lHrKviYBg8wllcYfkpYOFIMxDhuvRY1RsBafNytXA3cHz2Jd7w');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-sm text-slate-900 dark:text-white">Venkat Rao</span>
+<span class="text-xs text-slate-500">ID: #STF-018</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">bolt</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Electrician</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+<span class="size-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                                On Task
+                                            </span>
+</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white font-medium">Main Board Trip - Library</span>
+<span class="text-xs text-slate-500">Started 10 mins ago</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-navy dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#523a36] rounded-lg transition-colors" title="View Details">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="bg-white dark:bg-[#2a1a17] p-4 border-t border-slate-200 dark:border-[#3e2c29] flex items-center justify-between">
+<span class="text-sm text-slate-500 dark:text-[#a08c89]">Showing <span class="font-bold text-slate-900 dark:text-white">1-5</span> of <span class="font-bold text-slate-900 dark:text-white">42</span> staff</span>
+<div class="flex items-center gap-2">
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-[#523a36] text-slate-500 hover:bg-slate-50 dark:hover:bg-[#3e2c29] disabled:opacity-50">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold shadow-md shadow-primary/20">1</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-[#523a36] text-slate-500 hover:bg-slate-50 dark:hover:bg-[#3e2c29] hover:text-primary text-sm font-medium">2</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-[#523a36] text-slate-500 hover:bg-slate-50 dark:hover:bg-[#3e2c29] hover:text-primary text-sm font-medium">3</button>
+<span class="text-slate-400">...</span>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-[#523a36] text-slate-500 hover:bg-slate-50 dark:hover:bg-[#3e2c29]">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

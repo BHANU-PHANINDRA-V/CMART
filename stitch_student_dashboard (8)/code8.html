@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Task Detail View</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#144bb8",
+                        "terracotta": "#bc4b28", 
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-dark": "#1e293b",
+                        "surface-light": "#ffffff"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", // rounded-md
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark px-4 py-3 shadow-sm">
+<div class="mx-auto flex max-w-[600px] items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Task #4291</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Profile picture of a maintenance staff member" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjjrKeOPzYJ6TGANpP7ow7yyHtSVcAlt8coOT0gQGoFU9H0zGn5rGYx_HdwfpRVek4GautM96EM6QhZwJ3Or2D7915I9v97ck6-do15OnVNR0Etvcy2Ug5gWtvPV_ajpbcJv8EkaJXuyKQq898Zx3IlIYVbgwCtx0BENQdvKrslzuRWbHZAFJHtT0AaN7g-ZMCZO2bR02NKryZ3ZAXWVdblnhGUI2st35hrvgOosgU59R4wqtIEQ_6GhAmpksAIp-AvTOLjZsbQcc');">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-4 py-6 w-full">
+<div class="mx-auto flex max-w-[600px] flex-col gap-6">
+<!-- Task Header Card -->
+<section class="rounded-xl bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-gray-200 dark:border-gray-800">
+<div class="flex flex-col gap-4">
+<!-- Status Chips -->
+<div class="flex flex-wrap items-center justify-between gap-3">
+<div class="flex gap-2">
+<span class="inline-flex items-center gap-1.5 rounded-lg bg-terracotta/10 px-3 py-1 text-sm font-semibold text-terracotta dark:text-[#ff8a65] border border-terracotta/20">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+                                High Priority
+                            </span>
+<span class="inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:text-blue-300 border border-primary/20">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+                                Electrical
+                            </span>
+</div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Open</span>
+</div>
+<!-- Title & Location -->
+<div>
+<h2 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white mb-1">Broken Ceiling Fan</h2>
+<div class="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<p class="text-sm font-medium">Room 304 - Godavari Hostel</p>
+</div>
+</div>
+<!-- Description Body -->
+<div class="bg-background-light dark:bg-background-dark/50 rounded-lg p-4 border border-gray-200 dark:border-gray-800/50">
+<p class="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                            The fan is making a loud grinding noise and wobbling significantly at high speeds. It seems dangerous and needs urgent fixing before it falls.
+                        </p>
+</div>
+<!-- Meta Data Grid -->
+<div class="grid grid-cols-2 gap-4 border-t border-gray-200 dark:border-gray-700 pt-4 mt-2">
+<div class="flex flex-col gap-1">
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Reported By</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">person</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">Rahul K.</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Reported On</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">calendar_today</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">Oct 12, 10:00 AM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Proof of Work Section -->
+<section class="flex flex-col gap-4">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white px-1">Resolution Details</h3>
+<div class="rounded-xl bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-gray-200 dark:border-gray-800 flex flex-col gap-6">
+<!-- File Uploader -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-gray-700 dark:text-gray-300">Upload Completion Photo</label>
+<div class="group relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark/30 py-8 px-4 text-center transition-colors hover:border-primary hover:bg-primary/5 cursor-pointer">
+<div class="mb-3 rounded-full bg-surface-light dark:bg-gray-700 p-3 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl text-primary dark:text-white">add_a_photo</span>
+</div>
+<p class="text-sm font-medium text-gray-900 dark:text-white">Tap to upload photo</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Supports JPG, PNG (Max 5MB)</p>
+<input accept="image/*" class="absolute inset-0 h-full w-full cursor-pointer opacity-0" type="file"/>
+</div>
+</div>
+<!-- Resolution Note -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-gray-700 dark:text-gray-300" for="notes">Resolution Note <span class="text-gray-400 font-normal">(Optional)</span></label>
+<textarea class="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-primary shadow-sm resize-none p-3" id="notes" placeholder="Describe the fix (e.g., Replaced capacitor)..." rows="3"></textarea>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Sticky Footer Action -->
+<div class="sticky bottom-0 z-40 w-full border-t border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark p-4 shadow-lg backdrop-blur-sm bg-opacity-90 dark:bg-opacity-95">
+<div class="mx-auto max-w-[600px] flex flex-col gap-3">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-bold text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">check_circle</span>
+                Mark as Resolved
+            </button>
+<p class="text-center text-xs text-gray-400 dark:text-gray-500">
+                Action cannot be undone once submitted.
+            </p>
+</div>
+</div>
+</body></html>

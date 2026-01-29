@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Completion Confirmation - Campus Resolve</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111318] dark:text-white overflow-hidden">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Mock Background Dashboard (Context) -->
+<div class="flex h-full w-full flex-col blur-[2px] opacity-60 pointer-events-none select-none bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-[#151c2b] px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">engineering</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-[#111318] dark:text-white">Campus Resolve <span class="text-gray-400 font-normal">| Staff Portal</span></h1>
+</div>
+<div class="h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+</header>
+<!-- Content -->
+<main class="flex-1 p-8">
+<div class="mb-6 flex items-center justify-between">
+<h2 class="text-2xl font-bold">My Assigned Grievances</h2>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium">Refresh List</button>
+</div>
+<!-- Dummy Table -->
+<div class="w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#151c2b]">
+<div class="grid grid-cols-5 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50 p-4 text-sm font-medium text-gray-500">
+<div>Ticket ID</div>
+<div class="col-span-2">Issue</div>
+<div>Status</div>
+<div>Date</div>
+</div>
+<div class="grid grid-cols-5 p-4 text-sm items-center border-b border-gray-100 dark:border-gray-800">
+<div class="font-medium text-primary">#PLUMB-104</div>
+<div class="col-span-2">Leaking faucet in Hoste...</div>
+<div><span class="px-2 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-medium">In Progress</span></div>
+<div class="text-gray-500">Oct 24, 2023</div>
+</div>
+<!-- The active row being worked on -->
+<div class="grid grid-cols-5 p-4 text-sm items-center bg-blue-50/30 dark:bg-blue-900/10">
+<div class="font-medium text-primary">#ELEC-402</div>
+<div class="col-span-2">Power outage in Room 304</div>
+<div><span class="px-2 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-medium">Resolving...</span></div>
+<div class="text-gray-500">Oct 25, 2023</div>
+</div>
+<div class="grid grid-cols-5 p-4 text-sm items-center border-b border-gray-100 dark:border-gray-800">
+<div class="font-medium text-primary">#CIVIL-221</div>
+<div class="col-span-2">Broken window latch</div>
+<div><span class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs font-medium">Pending</span></div>
+<div class="text-gray-500">Oct 26, 2023</div>
+</div>
+</div>
+</main>
+</div>
+<!-- The Modal Overlay -->
+<div class="absolute inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300">
+<!-- Modal Card -->
+<div class="w-full max-w-[560px] transform rounded-2xl bg-white dark:bg-[#151c2b] shadow-2xl ring-1 ring-black/5 transition-all flex flex-col overflow-hidden">
+<!-- Modal Header -->
+<div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 px-6 py-5">
+<h3 class="text-xl font-bold tracking-tight text-[#111318] dark:text-white">Confirm Resolution</h3>
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Modal Content -->
+<div class="flex flex-col px-6 py-6 gap-6">
+<!-- Ticket Meta -->
+<div class="flex flex-col gap-2">
+<p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Ticket Details</p>
+<div class="flex gap-3 flex-wrap">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 pl-3 pr-4 border border-transparent dark:border-gray-700">
+<span class="material-symbols-outlined text-primary text-[18px]">tag</span>
+<p class="text-[#111318] dark:text-gray-200 text-sm font-medium leading-normal">#ELEC-402</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 pl-3 pr-4 border border-transparent dark:border-gray-700">
+<span class="material-symbols-outlined text-orange-600 text-[18px]">bolt</span>
+<p class="text-[#111318] dark:text-gray-200 text-sm font-medium leading-normal">Electrical</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 pl-3 pr-4 border border-transparent dark:border-gray-700">
+<span class="material-symbols-outlined text-gray-500 text-[18px]">location_on</span>
+<p class="text-[#111318] dark:text-gray-200 text-sm font-medium leading-normal">Hostel Block A, Room 304</p>
+</div>
+</div>
+</div>
+<!-- Work Summary -->
+<div class="flex flex-col gap-2">
+<p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Resolution Summary</p>
+<div class="rounded-xl bg-gray-50 dark:bg-gray-800/50 p-4 border border-gray-100 dark:border-gray-700/50">
+<p class="text-[#111318] dark:text-gray-300 text-base font-normal leading-relaxed">
+                                Replaced the faulty circuit breaker in the main distribution board for Room 304. Verified voltage levels and power supply stability with a multimeter. Power restored successfully.
+                            </p>
+</div>
+</div>
+<!-- Proof/Images -->
+<div class="flex flex-col gap-2">
+<p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Attached Proof</p>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-3">
+<!-- Image 1 -->
+<div class="group relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close up photo of a new electrical circuit breaker installed in a panel" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_ep28KGsaNEPFKlINaydQ1gUvq0mCAx-tTY5Z86-PBwW3bVT2_8b66b3rJB_i7XJZaQCa8MQgI77YQQYec8CsmyAQ9e8Qqq4zytWovjKfVrY3zo17zE2_6noQDR8raYWfGbmLh_Y8FpqUWZ1Bvq9aA5LdCAT0qpm3Gnyq33agJSnXf-AlILe3u9j_UkJIaUTuDOtXYyLrd43Rr3U0B38njgGT28WmyogxygIbq4Ocsz-ibqRFb1HeoW26AAj24GTmmpPVtrOhGPw");'>
+</div>
+<div class="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10"></div>
+</div>
+<!-- Image 2 -->
+<div class="group relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105" data-alt="Digital multimeter showing voltage reading on a display" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfWkWdan7wJK_LASTcUgu-PY8ZHvc7npwMijsJfjXiYN6ReWNHA4ndBYekx8cP_y9RZlXsEmDnj6jfXcxJ0eoTqVC9OpzfyEvRbbkkO2T8XUtUf06WDVhmoNjZz-P3ONxB5DKJYFjkpqEByqWLS5Gz5xL0kwB_JmWJ9aPJuVGvapq6oOQmDT-VU1m5LduS0Nhj-9nlB_urllVwqBL_Ej9lJJ3ajw5LbxtdSTOwYiL8f8nUr2S9fXvMtsPeEw_J0332begp-hdwzR4");'>
+</div>
+<div class="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="bg-gray-50 dark:bg-[#1a2333] px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 dark:border-gray-800">
+<div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Student will be notified instantly</span>
+</div>
+<div class="flex w-full sm:w-auto gap-3">
+<button class="flex-1 sm:flex-none min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-transparent text-[#111318] dark:text-white text-sm font-bold shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            Cancel
+                        </button>
+<button class="flex-1 sm:flex-none min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary hover:bg-blue-700 text-white text-sm font-bold shadow-md hover:shadow-lg transition-all flex gap-2">
+<span>Confirm Completion</span>
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

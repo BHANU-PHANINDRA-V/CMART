@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Resolve - Login</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C25634","primary-hover": "#a64528",
+                        "secondary": "#112344","background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                        "text-main": "#112344",
+                        "text-muted": "#64748b",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white font-body h-screen overflow-hidden">
+<div class="flex min-h-screen w-full">
+<div class="hidden lg:block relative w-0 flex-1 overflow-hidden">
+<div class="absolute inset-0 h-full w-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLNvhY7wevMaaq9a6fywJ1Ph0yjATRkVo5me5-xreogP-6ctZaS4cpA3VCc6Qig3qKQO6pOUR8sOwvBEqqjL0q2O38tJIxBwW6UThsrThbpnsQW1kVRdi_RK5jkuOc626djWA9M9z93l9tBqHoTHriwmWPjiRYbnm1RK5YqQm4aiFIQ6iTwFxeAY241_OLuf-oUJaDKWql9YyTTm6wcEYRr2RrfPlsWhdoyjFQQsU120ZngbgTwj-fllQiCdfNSkUECPyo_pq5ZuA");'>
+<div class="absolute inset-0 bg-secondary/30 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 p-12 text-white z-10 max-w-2xl">
+<h2 class="text-4xl font-display font-bold mb-4 leading-tight">National Institute of Technology, Andhra Pradesh</h2>
+<p class="text-lg text-white/90 font-light">Building a transparent and responsive campus community.</p>
+</div>
+</div>
+<div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-16 xl:px-24 bg-surface-light dark:bg-background-dark w-full lg:w-[45%] border-l border-slate-100 dark:border-slate-800">
+<div class="mx-auto w-full max-w-sm lg:w-96">
+<div class="flex items-center gap-3 mb-10">
+<div class="size-10 text-primary bg-primary/10 rounded-lg flex items-center justify-center p-2">
+<svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4ZM12 24C12 17.3726 17.3726 12 24 12C30.6274 12 36 17.3726 36 24C36 30.6274 30.6274 36 24 36C17.3726 36 12 30.6274 12 24Z" fill="currentColor" fill-rule="evenodd"></path>
+<path class="text-primary" d="M24 16V24L29 29" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+<span class="text-2xl font-display font-bold text-secondary dark:text-white tracking-tight">Campus Resolve</span>
+</div>
+<div class="mb-8">
+<h2 class="text-2xl font-display font-bold leading-9 tracking-tight text-secondary dark:text-white">Sign in to your account</h2>
+<p class="mt-2 text-sm leading-6 text-text-muted dark:text-slate-400">
+                    Intra-College Grievance Redressal Portal
+                </p>
+</div>
+<div class="mt-10">
+<form action="#" class="space-y-6" method="POST">
+<div>
+<label class="block text-sm font-semibold leading-6 text-secondary dark:text-slate-200" for="email">Institute Email</label>
+<div class="mt-2 relative">
+<input autocomplete="email" class="block w-full rounded-lg border-0 py-3 text-secondary shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 dark:bg-surface-dark dark:ring-gray-700 dark:text-white transition-all" id="email" name="email" placeholder="student@nitandhra.ac.in" required="" type="email"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">mail</span>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<label class="block text-sm font-semibold leading-6 text-secondary dark:text-slate-200" for="password">Password</label>
+<div class="text-sm">
+<a class="font-semibold text-primary hover:text-primary-hover hover:underline" href="#">Forgot password?</a>
+</div>
+</div>
+<div class="mt-2 relative">
+<input autocomplete="current-password" class="block w-full rounded-lg border-0 py-3 text-secondary shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 dark:bg-surface-dark dark:ring-gray-700 dark:text-white transition-all" id="password" name="password" required="" type="password"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">lock</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary dark:bg-surface-dark dark:border-gray-600" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-3 block text-sm leading-6 text-text-muted dark:text-slate-300" for="remember-me">Remember me</label>
+</div>
+<div>
+<button class="flex w-full justify-center rounded-lg bg-primary px-3 py-3 text-sm font-bold leading-6 text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 uppercase tracking-wide" type="submit">
+                            Login
+                        </button>
+</div>
+</form>
+<p class="mt-10 text-center text-sm text-text-muted dark:text-slate-400">
+                    Not a member yet?
+                    <a class="font-semibold leading-6 text-primary hover:text-primary-hover transition-colors" href="#">Create an account</a>
+</p>
+<div class="mt-12 border-t border-slate-100 dark:border-slate-800 pt-6">
+<p class="text-xs text-center text-slate-400">
+                        © 2024 NIT Andhra Pradesh. All rights reserved.
+                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

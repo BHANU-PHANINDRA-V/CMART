@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Resolve - Registration</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c0563f","primary-hover": "#a64530",
+                        "navy": "#1e293b","navy-dark": "#0f172a",
+                        "background-light": "#f1f5f9",
+                        "background-dark": "#0f172a",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-navy dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="absolute inset-0 bg-navy/5 dark:bg-black/80 z-10"></div>
+<div class="w-full h-full bg-cover bg-center opacity-[0.08] dark:opacity-[0.15] grayscale" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLNvhY7wevMaaq9a6fywJ1Ph0yjATRkVo5me5-xreogP-6ctZaS4cpA3VCc6Qig3qKQO6pOUR8sOwvBEqqjL0q2O38tJIxBwW6UThsrThbpnsQW1kVRdi_RK5jkuOc626djWA9M9z93l9tBqHoTHriwmWPjiRYbnm1RK5YqQm4aiFIQ6iTwFxeAY241_OLuf-oUJaDKWql9YyTTm6wcEYRr2RrfPlsWhdoyjFQQsU120ZngbgTwj-fllQiCdfNSkUECPyo_pq5ZuA");'>
+</div>
+</div>
+<header class="sticky top-0 z-50 w-full bg-white/95 dark:bg-navy-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="layout-container flex justify-center w-full">
+<div class="px-4 md:px-10 py-4 flex items-center justify-between w-full max-w-5xl">
+<div class="flex items-center gap-3 text-navy dark:text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4ZM12 24C12 17.3726 17.3726 12 24 12C30.6274 12 36 17.3726 36 24C36 30.6274 30.6274 36 24 36C17.3726 36 12 30.6274 12 24Z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M24 16V24L29 29" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+<div>
+<h2 class="text-xl font-bold leading-none tracking-tight text-navy dark:text-white">Campus Resolve</h2>
+<span class="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">NIT Andhra Pradesh</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:inline-block text-sm text-gray-600 dark:text-gray-400 font-medium">Already have an account?</span>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-5 border border-primary text-primary hover:bg-primary hover:text-white transition-all text-sm font-bold">
+                        Login
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center w-full relative z-10 py-12 px-4">
+<div class="w-full max-w-2xl">
+<div class="bg-white dark:bg-navy-dark rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+<div class="bg-navy p-8 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-9xl text-white">school</span>
+</div>
+<h1 class="text-3xl font-bold text-white mb-2 relative z-10">Create Account</h1>
+<p class="text-blue-100/80 font-normal relative z-10">Join the Intra-College Grievance Redressal System</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/50 px-8 py-4 border-b border-gray-100 dark:border-gray-700">
+<div class="flex items-center justify-between max-w-sm mx-auto">
+<div class="flex flex-col items-center gap-1">
+<div class="size-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold shadow-md shadow-primary/30">1</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Basic</span>
+</div>
+<div class="h-1 flex-1 bg-gray-200 dark:bg-gray-600 mx-2 rounded-full relative">
+<div class="absolute left-0 top-0 h-full w-1/2 bg-primary rounded-full"></div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="size-8 rounded-full bg-white border-2 border-gray-300 dark:border-gray-500 text-gray-400 flex items-center justify-center text-sm font-bold">2</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-gray-400">Role</span>
+</div>
+<div class="h-1 flex-1 bg-gray-200 dark:bg-gray-600 mx-2 rounded-full"></div>
+<div class="flex flex-col items-center gap-1">
+<div class="size-8 rounded-full bg-white border-2 border-gray-300 dark:border-gray-500 text-gray-400 flex items-center justify-center text-sm font-bold">3</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-gray-400">Security</span>
+</div>
+</div>
+</div>
+<form class="p-8 md:p-10 flex flex-col gap-8">
+<div class="flex flex-col gap-5">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">person_add</span>
+<h3 class="text-lg font-bold text-navy dark:text-white">Basic Details</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="flex flex-col gap-1.5 col-span-2">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-300">Full Name</label>
+<input class="w-full h-11 rounded-lg border-gray-300 dark:border-gray-600 dark:bg-navy bg-gray-50 text-navy dark:text-white px-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="e.g. Rahul Sharma" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-300">Roll Number / ID</label>
+<input class="w-full h-11 rounded-lg border-gray-300 dark:border-gray-600 dark:bg-navy bg-gray-50 text-navy dark:text-white px-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="e.g. 4211XX" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-300">NIT Email</label>
+<input class="w-full h-11 rounded-lg border-gray-300 dark:border-gray-600 dark:bg-navy bg-gray-50 text-navy dark:text-white px-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="student@nitandhra.ac.in" type="email"/>
+</div>
+</div>
+</div>
+<div class="h-px bg-gray-100 dark:bg-gray-700 w-full"></div>
+<div class="flex flex-col gap-5">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">badge</span>
+<h3 class="text-lg font-bold text-navy dark:text-white">Select Role</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="cursor-pointer group relative">
+<input checked="" class="peer sr-only" name="role" type="radio"/>
+<div class="h-full p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-primary/50 transition-all flex flex-col items-center text-center gap-3">
+<div class="size-10 rounded-full bg-blue-100 text-navy flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="font-bold text-sm text-navy dark:text-white">Student</span>
+</div>
+<div class="absolute top-3 right-3 hidden peer-checked:block text-primary">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+</label>
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="role" type="radio"/>
+<div class="h-full p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-primary/50 transition-all flex flex-col items-center text-center gap-3">
+<div class="size-10 rounded-full bg-orange-100 text-orange-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+<span class="font-bold text-sm text-navy dark:text-white">Staff</span>
+</div>
+<div class="absolute top-3 right-3 hidden peer-checked:block text-primary">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+</label>
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="role" type="radio"/>
+<div class="h-full p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-primary/50 transition-all flex flex-col items-center text-center gap-3">
+<div class="size-10 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<span class="font-bold text-sm text-navy dark:text-white">Admin</span>
+</div>
+<div class="absolute top-3 right-3 hidden peer-checked:block text-primary">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+</label>
+</div>
+</div>
+<div class="h-px bg-gray-100 dark:bg-gray-700 w-full"></div>
+<div class="flex flex-col gap-5">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">lock</span>
+<h3 class="text-lg font-bold text-navy dark:text-white">Security</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-300">Password</label>
+<input class="w-full h-11 rounded-lg border-gray-300 dark:border-gray-600 dark:bg-navy bg-gray-50 text-navy dark:text-white px-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-300">Confirm Password</label>
+<input class="w-full h-11 rounded-lg border-gray-300 dark:border-gray-600 dark:bg-navy bg-gray-50 text-navy dark:text-white px-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<p class="text-xs text-gray-500 mt-[-10px]">Must be at least 8 characters with 1 special character.</p>
+</div>
+<div class="mt-4 pt-6 flex flex-col gap-4">
+<button class="w-full flex cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary hover:bg-primary-hover shadow-lg shadow-primary/30 transition-all text-white text-base font-bold leading-normal tracking-[0.015em]">
+                            Create Account
+                        </button>
+<p class="text-center text-sm text-gray-500 dark:text-gray-400">
+                            By signing up, you agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                        </p>
+</div>
+</form>
+</div>
+<div class="mt-8 text-center">
+<p class="text-xs text-gray-400 dark:text-gray-500">
+                    © 2024 Campus Resolve. National Institute of Technology, Andhra Pradesh.
+                </p>
+</div>
+</div>
+</main>
+
+</body></html>

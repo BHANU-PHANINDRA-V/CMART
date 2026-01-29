@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Resolve - Admin Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4", // Navy Blue
+                        "secondary": "#C05621", // Terracotta approximation
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom chart styles for non-JS implementation */
+        .pie-chart {
+            background: conic-gradient(
+                #1152d4 0% 40%,   /* Infrastructure */
+                #C05621 40% 70%,  /* Academics (Terracotta) */
+                #fbbf24 70% 90%,  /* Sanitation */
+                #9ca3af 90% 100%  /* Others */
+            );
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#111318] dark:text-white antialiased overflow-x-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="hidden w-64 flex-col border-r border-[#dbdfe6] dark:border-gray-800 bg-white dark:bg-gray-900 md:flex z-20">
+<div class="flex h-16 items-center gap-3 px-6 border-b border-[#dbdfe6] dark:border-gray-800">
+<div class="flex items-center justify-center rounded-full bg-primary/10 p-2">
+<span class="material-symbols-outlined text-primary text-2xl">school</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-base font-bold leading-none text-[#111318] dark:text-white">Campus Resolve</h1>
+<p class="text-xs text-[#616f89] dark:text-gray-400 mt-1">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-4 py-6">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-[#616f89] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px] fill-1">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-[#616f89] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">assignment</span>
+<span class="text-sm font-medium">Complaints</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-[#616f89] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">apartment</span>
+<span class="text-sm font-medium">Departments</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-[#616f89] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+</div>
+<div class="mt-8">
+<p class="px-3 text-xs font-semibold uppercase tracking-wider text-[#616f89] dark:text-gray-500 mb-2">System</p>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-[#616f89] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-[#616f89] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">help</span>
+<span class="text-sm font-medium">Help Center</span>
+</a>
+</div>
+</div>
+</nav>
+<div class="border-t border-[#dbdfe6] dark:border-gray-800 p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Admin user profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuu84DB-zsnsGHarHdfNheNwGj87MNEdYOTTIXOOpJ8-F7hoQglvLqQ2Zx5_5pFFqovEmNRr8krqmI5iLjyozBf_v8o4m1l8iu7njPgtn8_6Wca1Pb203DRogpZF96vPubWjO--1Uto7SuqS5uwgQ9fXRLagpA1cZEBuM9mAcHYy2R9O8jpI7In-4OKlHx7y-6Qk4ceIVaf84j_9c-nykHVZ69GUA26RVFkvRWIeOE308b88_BfKztSih2MlGee7UxRxKO2oaIOB8");'></div>
+<div>
+<p class="text-sm font-medium text-[#111318] dark:text-white">Dr. A. Verma</p>
+<p class="text-xs text-[#616f89] dark:text-gray-400">Dean of Student Affairs</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="flex h-16 items-center justify-between gap-4 border-b border-[#dbdfe6] dark:border-gray-800 bg-white dark:bg-gray-900 px-6 py-3">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="text-[#616f89] dark:text-gray-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="text-lg font-bold">Campus Resolve</span>
+</div>
+<div class="hidden lg:block">
+<h2 class="text-xl font-bold text-[#111318] dark:text-white">Analytics Overview</h2>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<!-- Search Bar Reuse -->
+<div class="hidden max-w-md flex-1 md:block">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#616f89] material-symbols-outlined text-[20px]">search</span>
+<input class="h-10 w-full rounded-lg border-none bg-[#f0f2f4] dark:bg-gray-800 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 dark:text-white dark:placeholder-gray-500" placeholder="Search data, reports, or grievance IDs..." type="text"/>
+</div>
+</div>
+<button class="relative rounded-full p-2 text-[#616f89] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-gray-800">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute right-2 top-2 size-2 rounded-full bg-secondary"></span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 scroll-smooth">
+<div class="mx-auto max-w-7xl flex flex-col gap-6">
+<!-- Filters Toolbar -->
+<div class="flex flex-col gap-4 rounded-xl bg-white dark:bg-gray-900 p-4 shadow-sm sm:flex-row sm:items-end sm:justify-between border border-[#dbdfe6] dark:border-gray-800">
+<div class="flex flex-1 flex-col gap-4 sm:flex-row sm:items-end">
+<label class="flex flex-col gap-1.5 w-full sm:w-auto">
+<span class="text-xs font-semibold text-[#616f89] dark:text-gray-400">Date Range</span>
+<div class="flex items-center gap-2">
+<div class="relative">
+<input class="h-10 rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 px-3 text-sm text-[#111318] dark:text-white focus:border-primary focus:ring-0" type="date" value="2023-10-01"/>
+</div>
+<span class="text-[#616f89]">-</span>
+<div class="relative">
+<input class="h-10 rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 px-3 text-sm text-[#111318] dark:text-white focus:border-primary focus:ring-0" type="date" value="2023-10-31"/>
+</div>
+</div>
+</label>
+<label class="flex flex-col gap-1.5 w-full sm:w-48">
+<span class="text-xs font-semibold text-[#616f89] dark:text-gray-400">Department</span>
+<select class="h-10 w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 px-3 text-sm text-[#111318] dark:text-white focus:border-primary focus:ring-0">
+<option value="all">All Departments</option>
+<option value="cse">Computer Science</option>
+<option value="eee">Electrical Eng.</option>
+<option value="mech">Mechanical Eng.</option>
+<option value="hostel">Hostel Admin</option>
+</select>
+</label>
+<button class="h-10 rounded-lg bg-primary px-6 text-sm font-medium text-white shadow-sm hover:bg-primary/90 transition-colors mt-4 sm:mt-0">
+                                Apply
+                            </button>
+</div>
+<button class="flex items-center gap-2 h-10 rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 px-4 text-sm font-medium text-[#111318] dark:text-white hover:bg-[#f0f2f4] dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Export Report
+                        </button>
+</div>
+<!-- KPI Cards -->
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<!-- Card 1 -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-5 shadow-sm border border-[#dbdfe6] dark:border-gray-800">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-[#616f89] dark:text-gray-400">Total Grievances</p>
+<h3 class="mt-2 text-3xl font-bold text-[#111318] dark:text-white">1,245</h3>
+</div>
+<div class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">inbox</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-xs">
+<span class="flex items-center font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span>
+                                    +12%
+                                </span>
+<span class="text-[#616f89] dark:text-gray-500">from last month</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-5 shadow-sm border border-[#dbdfe6] dark:border-gray-800">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-[#616f89] dark:text-gray-400">Pending Review</p>
+<h3 class="mt-2 text-3xl font-bold text-[#111318] dark:text-white">42</h3>
+</div>
+<div class="flex size-10 items-center justify-center rounded-lg bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-xs">
+<span class="flex items-center font-medium text-red-600 bg-red-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span>
+                                    +5%
+                                </span>
+<span class="text-[#616f89] dark:text-gray-500">new since yesterday</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-5 shadow-sm border border-[#dbdfe6] dark:border-gray-800">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-[#616f89] dark:text-gray-400">Resolved</p>
+<h3 class="mt-2 text-3xl font-bold text-[#111318] dark:text-white">1,180</h3>
+</div>
+<div class="flex size-10 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-xs">
+<span class="flex items-center font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded">
+                                    94.7%
+                                </span>
+<span class="text-[#616f89] dark:text-gray-500">Resolution Rate</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-5 shadow-sm border border-[#dbdfe6] dark:border-gray-800">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-[#616f89] dark:text-gray-400">Escalated</p>
+<h3 class="mt-2 text-3xl font-bold text-[#111318] dark:text-white">23</h3>
+</div>
+<div class="flex size-10 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined">warning</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-xs">
+<span class="flex items-center font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_down</span>
+                                    -2%
+                                </span>
+<span class="text-[#616f89] dark:text-gray-500">from last month</span>
+</div>
+</div>
+</div>
+<!-- Charts Row 1 -->
+<div class="grid gap-6 lg:grid-cols-3">
+<!-- Bar Chart: Monthly Trends -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-6 shadow-sm border border-[#dbdfe6] dark:border-gray-800 lg:col-span-2">
+<div class="mb-6 flex items-center justify-between">
+<h3 class="text-lg font-bold text-[#111318] dark:text-white">Monthly Trends</h3>
+<div class="flex items-center gap-2 text-xs">
+<div class="flex items-center gap-1">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-[#616f89] dark:text-gray-400">Received</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="size-3 rounded-full bg-secondary"></div>
+<span class="text-[#616f89] dark:text-gray-400">Resolved</span>
+</div>
+</div>
+</div>
+<div class="flex flex-1 items-end justify-between gap-2 sm:gap-4 h-64 border-b border-gray-100 dark:border-gray-800 pb-2">
+<!-- Data Bars Loop (Mock) -->
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[40%]" title="Received: 40"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[35%]" title="Resolved: 35"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Jan</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[55%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[50%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Feb</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[45%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[40%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Mar</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[70%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[65%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Apr</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[60%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[58%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">May</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[30%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[20%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Jun</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[20%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[18%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Jul</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[65%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[60%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Aug</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[80%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[70%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Sep</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[85%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[82%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Oct</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[60%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[55%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Nov</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full w-full gap-1 group">
+<div class="w-full flex justify-center gap-1 h-full items-end">
+<div class="w-3 sm:w-4 bg-primary rounded-t-sm h-[40%]"></div>
+<div class="w-3 sm:w-4 bg-secondary rounded-t-sm h-[38%]"></div>
+</div>
+<span class="text-[10px] text-[#616f89]">Dec</span>
+</div>
+</div>
+</div>
+<!-- Pie Chart: Category -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-6 shadow-sm border border-[#dbdfe6] dark:border-gray-800">
+<h3 class="mb-6 text-lg font-bold text-[#111318] dark:text-white">Complaints by Category</h3>
+<div class="flex flex-1 flex-col items-center justify-center">
+<div class="relative size-48 rounded-full pie-chart shadow-inner">
+<div class="absolute inset-0 m-auto size-32 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center flex-col">
+<span class="text-3xl font-bold text-[#111318] dark:text-white">1.2k</span>
+<span class="text-xs text-[#616f89]">Total</span>
+</div>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-primary"></div>
+<div class="flex flex-col">
+<span class="text-xs text-[#616f89] dark:text-gray-400">Infrastructure</span>
+<span class="text-sm font-semibold dark:text-white">40%</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-secondary"></div>
+<div class="flex flex-col">
+<span class="text-xs text-[#616f89] dark:text-gray-400">Academics</span>
+<span class="text-sm font-semibold dark:text-white">30%</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-yellow-400"></div>
+<div class="flex flex-col">
+<span class="text-xs text-[#616f89] dark:text-gray-400">Sanitation</span>
+<span class="text-sm font-semibold dark:text-white">20%</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-gray-400"></div>
+<div class="flex flex-col">
+<span class="text-xs text-[#616f89] dark:text-gray-400">Others</span>
+<span class="text-sm font-semibold dark:text-white">10%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Charts Row 2 -->
+<div class="grid gap-6 lg:grid-cols-2">
+<!-- Horizontal Bar: Average Resolution Time -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-6 shadow-sm border border-[#dbdfe6] dark:border-gray-800">
+<h3 class="mb-4 text-lg font-bold text-[#111318] dark:text-white">Average Resolution Time (Days)</h3>
+<div class="flex flex-col gap-4">
+<!-- Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-sm">
+<span class="font-medium dark:text-white">Computer Science</span>
+<span class="text-[#616f89]">1.5 Days</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#f0f2f4] dark:bg-gray-800 overflow-hidden">
+<div class="h-full rounded-full bg-primary w-[30%]"></div>
+</div>
+</div>
+<!-- Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-sm">
+<span class="font-medium dark:text-white">Electrical Eng.</span>
+<span class="text-[#616f89]">3.2 Days</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#f0f2f4] dark:bg-gray-800 overflow-hidden">
+<div class="h-full rounded-full bg-primary w-[65%]"></div>
+</div>
+</div>
+<!-- Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-sm">
+<span class="font-medium dark:text-white">Hostel Admin</span>
+<span class="text-[#616f89]">4.8 Days</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#f0f2f4] dark:bg-gray-800 overflow-hidden">
+<div class="h-full rounded-full bg-secondary w-[90%]"></div>
+</div>
+</div>
+<!-- Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-sm">
+<span class="font-medium dark:text-white">Mechanical Eng.</span>
+<span class="text-[#616f89]">2.0 Days</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#f0f2f4] dark:bg-gray-800 overflow-hidden">
+<div class="h-full rounded-full bg-primary w-[40%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-gray-900 p-6 shadow-sm border border-[#dbdfe6] dark:border-gray-800">
+<div class="mb-4 flex items-center justify-between">
+<h3 class="text-lg font-bold text-[#111318] dark:text-white">Recent High Priority</h3>
+<button class="text-sm font-medium text-primary hover:text-primary/80">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="border-b border-[#dbdfe6] dark:border-gray-800">
+<tr>
+<th class="pb-3 font-semibold text-[#616f89] dark:text-gray-400">ID</th>
+<th class="pb-3 font-semibold text-[#616f89] dark:text-gray-400">Issue</th>
+<th class="pb-3 font-semibold text-[#616f89] dark:text-gray-400">Department</th>
+<th class="pb-3 font-semibold text-[#616f89] dark:text-gray-400">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#dbdfe6] dark:divide-gray-800">
+<tr>
+<td class="py-3 font-medium dark:text-white">#GR-2045</td>
+<td class="py-3 text-[#111318] dark:text-gray-300">Water Supply Issue</td>
+<td class="py-3 text-[#616f89] dark:text-gray-400">Hostel - Block A</td>
+<td class="py-3"><span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">High</span></td>
+</tr>
+<tr>
+<td class="py-3 font-medium dark:text-white">#GR-2044</td>
+<td class="py-3 text-[#111318] dark:text-gray-300">Lab Equipment Fault</td>
+<td class="py-3 text-[#616f89] dark:text-gray-400">Electrical Dept</td>
+<td class="py-3"><span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">Pending</span></td>
+</tr>
+<tr>
+<td class="py-3 font-medium dark:text-white">#GR-2041</td>
+<td class="py-3 text-[#111318] dark:text-gray-300">Mess Hygiene</td>
+<td class="py-3 text-[#616f89] dark:text-gray-400">Central Mess</td>
+<td class="py-3"><span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">High</span></td>
+</tr>
+<tr>
+<td class="py-3 font-medium dark:text-white">#GR-2039</td>
+<td class="py-3 text-[#111318] dark:text-gray-300">Exam Schedule</td>
+<td class="py-3 text-[#616f89] dark:text-gray-400">Academic Section</td>
+<td class="py-3"><span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Resolved</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
